@@ -32,9 +32,9 @@ public class Repository implements RepositoryInterface {
         // Set up datasource and connection
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/planguin");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("lalli");
+        dataSource.setUrl("jdbc:postgresql://ec2-54-247-98-197.eu-west-1.compute.amazonaws.com:5432/dcgra5duuhn6ui?user=euvjqpzmwcmopm&password=IJ8oXh8-CmIPRLU352Y4uHEhtS");
+        dataSource.setUsername("euvjqpzmwcmopm");
+        dataSource.setPassword("IJ8oXh8-CmIPRLU352Y4uHEhtS");
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
