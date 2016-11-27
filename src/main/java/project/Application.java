@@ -7,7 +7,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * The main class of the project.
@@ -25,7 +24,6 @@ public class Application extends SpringBootServletInitializer{
     }
 
     public static void main(String[] args) {
-        SecurityContextHolder.setStrategyName("MODE_GLOBAL");
         SpringApplication.run(Application.class,args);
     }
 

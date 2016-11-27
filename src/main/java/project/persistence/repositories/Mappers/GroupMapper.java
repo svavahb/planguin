@@ -8,6 +8,7 @@ import project.persistence.entities.Group;
 
 /**
  * Created by Svava on 03.11.16.
+ * Class for mapping results from database to a group object
  */
 public class GroupMapper implements RowMapper {
 

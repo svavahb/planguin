@@ -27,9 +27,11 @@ public class CompareService {
 
     public CompareService(){repository = new Repository();}
 
+    // Generates a list of all time slots occupied by a schedule item from any user in a group
     public List<String> compareScheduleGroup(int grpId, int weekNo, int year){
         Group group = repository.findGroup(grpId);
         List<User> members = group.getMembers();
+        // Get a list of all schedule items for all users in group
         List<ScheduleItem> items = new ArrayList<>();
         for (User u:members) {
             List<ScheduleItem> item = repository.findItemsByUserWeek(u.getUserId(),weekNo,year);
@@ -40,6 +42,7 @@ public class CompareService {
 
         List <String> timeSlots = createTimeSlots();
 
+        // Create a list of all time slots occupied
         List<String> nonFreeSlots = new ArrayList<>();
         for (String slot : timeSlots) {
             for (ScheduleItem item : items) {
@@ -55,15 +58,18 @@ public class CompareService {
         return nonFreeSlots;
     }
 
+    // Generates a list of all time slots occupied by schedule items from either user
     public List<String> compareSchedules(int user1, int user2, int weekNo, int year){
         List<ScheduleItem> items1 = repository.findItemsByUserWeek(user1,weekNo, year);
         List<ScheduleItem> items2 = repository.findItemsByUserWeek(user2,weekNo, year);
+        // Add all items to one list
         for (ScheduleItem s:items2) {
             items1.add(s);
         }
 
         List <String> timeSlots = createTimeSlots();
 
+        // Generate list of all occupied time slots
         List<String> nonFreeSlots = new ArrayList<>();
         for (String slot : timeSlots) {
             for (ScheduleItem item : items1) {
@@ -78,11 +84,13 @@ public class CompareService {
         return nonFreeSlots;
     }
 
+    // Find a user by username
     public User findUserByName(String username) {
         User user = repository.findUsersByName(username);
         return user;
     }
 
+    // Find week no of LDT
     public int findWeekNo(LocalDateTime LDT){
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
         int weekNumber = LDT.get(woy);
@@ -90,6 +98,7 @@ public class CompareService {
         return weekNumber;
     }
 
+    // Generate list of timeslot strings
     public List<String> createTimeSlots() {
         List<String> timeSlots = new ArrayList<>();
         for (int i = 6; i<=20; i++){

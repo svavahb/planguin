@@ -21,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private Repository userRepository = new Repository();
 
+    // Loads a user and authorities by username
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findUsersByName(username);

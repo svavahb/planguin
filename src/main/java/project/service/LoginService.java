@@ -17,6 +17,7 @@ public class LoginService {
 
     Repository repository;
 
+    // Encryption helper object
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public LoginService() {
@@ -24,8 +25,10 @@ public class LoginService {
         this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
 
+    // Create a user
     public User createUser(String username, String password, String photo, String school) {
         User user = new User();
+        // Encrypt password
         password = bCryptPasswordEncoder.encode(password);
         int id = repository.createUser(password, photo, username, school);
         user.setUserId(id);
@@ -36,6 +39,7 @@ public class LoginService {
         return user;
     }
 
+    // Check if username is taken
     public boolean usernameExists(String username) {
         int id = repository.getUserByUsername(username);
         if (id == -1) return false;

@@ -5,16 +5,17 @@ import java.util.List;
 
 /**
  * Created by Þórunn on 11/2/2016.
+ * Class for containing info about a user
  */
 public class User {
     private List<User> friends = new ArrayList<>();
     private List<Group> groups = new ArrayList<>();
     private String username;
     private int userId;
-    private String photo;
+    private String photo;  // Not used in this version
     private String school;
     private String password;
-    private String passwordConfirm;
+    private String passwordConfirm;  // Only used in signup
 
     public List<User> getFriends(){return friends;}
     public void addFriend(User user){friends.add(user);}

@@ -4,22 +4,24 @@ import java.util.*;
 
 /**
  * Created by Þórunn on 11/2/2016.
+ * Class for containing all info about a schedule item
  */
 public class ScheduleItem {
     private String title;
     private int id;
     private int userId;
     private LocalDateTime startTime;
-    private List<User> taggedUsers = new ArrayList<>();
     private LocalDateTime endTime;
+    private List<User> taggedUsers = new ArrayList<>();  // Never used in this version
     private int weekNo;
     private int year;
     private String location;
     private String color;
     private String description;
-    private List<String> filters = new ArrayList<>();
+    private List<String> filters = new ArrayList<>();  // Never used in this version
     private String filter;
     private String date;
+    // These are used for ease of showing schedule in view:
     private String startstring;
     private String endstring;
     private int timeSpan;
@@ -88,6 +90,8 @@ public class ScheduleItem {
         startTime = start;
         endTime = end;
     }
+
+    // Calculates the timespan for this item
     public void calculateTime(){
         int hours =endTime.getHour() -startTime.getHour();
         int minutes = endTime.getMinute() - startTime.getMinute();
@@ -97,6 +101,7 @@ public class ScheduleItem {
         this.timeSpan = timespan;
     }
 
+    // Finds the number of the item's weekday. 0 = Monday, 7 = Sunday
     public void findWeekDay(){
         int weekday = startTime.getDayOfWeek().getValue();
         this.weekDay = weekday-1;

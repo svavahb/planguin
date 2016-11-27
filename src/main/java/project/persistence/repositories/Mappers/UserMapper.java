@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 /**
  * Created by Svava on 03.11.16.
+ * Class for mapping results from database to User object
  */
 public class UserMapper implements RowMapper {
 

@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * Created by Þórunn on 11/2/2016.
+ * Class for containing info about a group
  */
 public class Group {
 

@@ -20,16 +20,20 @@ public class SearchService {
         this.repository = new Repository();
     }
 
+    // Get list of all users
     public List<User> findAll(){
         return repository.findAllUsers();
     }
 
+    // Find a user by name
     public User findByName(String username){
         return repository.findUsersByName(username);
     }
 
+    // Find a user by id
     public User findByUserId(int userId) { return repository.findUserById((userId)); }
 
+    // Create a friendship
     public boolean createFriendship(int userId1, int userId2){
         repository.createFriendship(userId1,userId2);
 
@@ -42,6 +46,7 @@ public class SearchService {
         return true;
     }
 
+    // Check if user1 and user2 are friends
     public boolean checkIfFriend(User user1, User user2) {
         for (User u : user1.getFriends()) {
             if (u.getUserId() == user2.getUserId()) {
@@ -56,10 +61,12 @@ public class SearchService {
         return false;
     }
 
+    // Find a group by id
     public Group findGroup(int grpId) {
         return repository.findGroup(grpId);
     }
 
+    // Add a user to a group
     public void addGroupMemeber(int groupId, int userId) {
         repository.addGroupMember(groupId, userId);
     }

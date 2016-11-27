@@ -7,6 +7,7 @@ import project.persistence.entities.ScheduleItem;
 import org.springframework.jdbc.core.RowMapper;
 /**
  * Created by Svava on 03.11.16.
+ * Class for mapping results from database to Schedule Item object
  */
 public class ItemMapper implements RowMapper {
 
@@ -22,6 +23,7 @@ public class ItemMapper implements RowMapper {
         item.setTitle(rs.getString("title"));
         item.setWeekNo(rs.getInt("weekNo"));
         item.setYear(rs.getInt("year"));
+        // Generate timespan, weekday, startstring and endstring based on other fields
         item.calculateTime();
         item.findWeekDay();
         item.setStartstring(item.getStartTime().toString().substring(11));
